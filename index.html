@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">ระบบแนะนำเมล็ดข้าว</h2>
+        <form method="POST" action="/predict">
+            <div class="form-group">
+                <label for="N">ไนโตรเจน (Nitrogen) (N)</label>
+                <input type="number" step="any" class="form-control" id="N" name="N" required>
+            </div>
+            <div class="form-group">
+                <label for="P">ฟอสฟอรัส (Phosphorus) (P)</label>
+                <input type="number" step="any" class="form-control" id="P" name="P" required>
+            </div>
+            <div class="form-group">
+                <label for="K">โพแทสเซียม (Potassium) (K)</label>
+                <input type="number" step="any" class="form-control" id="K" name="K" required>
+            </div>
+            <div class="form-group">
+                <label for="temperature">อุณหภูมิ (Temperature) (°C)</label>
+                <input type="number" step="any" class="form-control" id="temperature" name="temperature" required>
+            </div>
+            <div class="form-group">
+                <label for="humidity">ความชื้น (Humidity) (%)</label>
+                <input type="number" step="any" class="form-control" id="humidity" name="humidity" required>
+            </div>
+            <div class="form-group">
+                <label for="ph">ดิน (Soil) pH</label>
+                <input type="number" step="any" class="form-control" id="ph" name="ph" required>
+            </div>
+            <div class="form-group">
+                <label for="rainfall">ปริมาณน้ำฝน (Rainfall) (mm)</label>
+                <input type="number" step="any" class="form-control" id="rainfall" name="rainfall" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">ทำนาย</button>
+        </form>
+
+        <h3 class="mt-4 text-center text-success">ผลลัพธ์ : {{ result }}</h3>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
